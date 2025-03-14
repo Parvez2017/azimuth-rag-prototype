@@ -16,6 +16,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 api_key = os.getenv("QDRANT_API_KEY")
 qdrant_url = os.getenv("QDRANT_URL")
 openai_key = os.getenv("OPENAI_API_KEY")
