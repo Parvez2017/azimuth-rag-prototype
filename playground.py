@@ -50,7 +50,7 @@ venue_knowledge = JSONKnowledgeBase(
     )
 )
 
-# artist_knowledge.load(recreate=False)
+artist_knowledge.load(recreate=False)
 venue_knowledge.load(recreate=False)
 
 
