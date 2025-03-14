@@ -1,7 +1,6 @@
 import os
-import typer
 from typing import Optional
-from rich.prompt import Prompt
+
 
 from phi.agent import Agent, AgentKnowledge
 from phi.knowledge.text import TextKnowledgeBase
