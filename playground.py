@@ -1,7 +1,7 @@
 import os
 from typing import Optional
 
-
+import streamlit as st
 from phi.agent import Agent, AgentKnowledge
 from phi.knowledge.text import TextKnowledgeBase
 
