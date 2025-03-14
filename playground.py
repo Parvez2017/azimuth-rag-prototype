@@ -16,7 +16,7 @@ from phi.embedder.google import GeminiEmbedder
 import google.generativeai as ggi
 
 # ggi.configure(api_key = os.environ.get('GEMINIAPI_KEY'))
-apikey = os.environ.get('GEMINIAPI_KEY')
+apikey = os.environ.get('GOOGLE_API_KEY')
 
 # os.environ['GEMINIAPI_KEY'] = st.secrets['GEMINIAPI_KEY']
 
