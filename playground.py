@@ -11,9 +11,9 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 from phi.vectordb.chroma import ChromaDb
 from phi.knowledge.json import JSONKnowledgeBase
 from phi.run.response import RunEvent, RunResponse
-from phi.model.google import Gemini
-from phi.embedder.google import GeminiEmbedder
-import google.generativeai as ggi
+from phi.embedder.openai import OpenAIEmbedder
+from phi.model.openai import OpenAIChat
+
 
 # ggi.configure(api_key = os.environ.get('GEMINIAPI_KEY'))
 # apikey = os.environ.get('GOOGLE_API_KEY')
@@ -35,7 +35,7 @@ artist_knowledge = JSONKnowledgeBase(
     path="artists.json",
     vector_db=ChromaDb(
         collection=collection_name,
-        embedder=GeminiEmbedder(),
+        embedder=OpenAIEmbedder(),
         persistent_client=True,
 
 )
@@ -45,7 +45,7 @@ venue_knowledge = JSONKnowledgeBase(
     path="venues.json",
     vector_db=ChromaDb(
         collection="venues",
-        embedder=GeminiEmbedder(),
+        embedder=OpenAIEmbedder(),
         persistent_client=True,
     )
 )
@@ -55,7 +55,7 @@ venue_knowledge.load(recreate=False)
 
 
 artist_agent = Agent(
-    model=Gemini(id="gemini-2.0-flash"),
+    model=OpenAIChat(),
     # Add the knowledge base to the agent
     knowledge=artist_knowledge,
     search_knowledge=True,
@@ -65,7 +65,7 @@ artist_agent = Agent(
 
 
 venue_agent = Agent(
-    model=Gemini(id="gemini-2.0-flash"),
+    model=OpenAIChat(),
     knowledge=venue_knowledge,
     search_knowledge=True,
     show_tool_calls=True,
