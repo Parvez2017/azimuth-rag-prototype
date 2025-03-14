@@ -4,7 +4,6 @@ from typing import Optional
 
 from phi.agent import Agent, AgentKnowledge
 from phi.knowledge.text import TextKnowledgeBase
-from phi.vectordb.qdrant import Qdrant
 from phi.embedder.openai import OpenAIEmbedder
 from phi.model.openai import OpenAIChat
 from phi.vectordb.chroma import ChromaDb
