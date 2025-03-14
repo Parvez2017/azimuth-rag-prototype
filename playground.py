@@ -42,7 +42,7 @@ artist_knowledge = JSONKnowledgeBase(
 )
 
 venue_knowledge = JSONKnowledgeBase(
-    path="venues.json",
+    path="vanues.json",
     vector_db=ChromaDb(
         collection="venues",
         embedder=OpenAIEmbedder(),
