@@ -33,7 +33,7 @@ artist_knowledge = JSONKnowledgeBase(
     path="artists.json",
     vector_db=ChromaDb(
         collection=collection_name,
-        embedder=GeminiEmbedder(api_key=gemini_key),
+        embedder=GeminiEmbedder(),
         persistent_client=True,
 
 )
@@ -43,7 +43,7 @@ venue_knowledge = JSONKnowledgeBase(
     path="venues.json",
     vector_db=ChromaDb(
         collection="venues",
-        embedder=GeminiEmbedder(api_key=gemini_key),
+        embedder=GeminiEmbedder(),
         persistent_client=True,
     )
 )
@@ -53,7 +53,7 @@ venue_knowledge.load(recreate=False)
 
 
 artist_agent = Agent(
-    model=Gemini(id="gemini-2.0-flash", api_key=gemini_key),
+    model=Gemini(id="gemini-2.0-flash"),
     # Add the knowledge base to the agent
     knowledge=artist_knowledge,
     search_knowledge=True,
@@ -63,7 +63,7 @@ artist_agent = Agent(
 
 
 venue_agent = Agent(
-    model=Gemini(id="gemini-2.0-flash", api_key=gemini_key),
+    model=Gemini(id="gemini-2.0-flash"),
     knowledge=venue_knowledge,
     search_knowledge=True,
     show_tool_calls=True,
