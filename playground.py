@@ -14,9 +14,7 @@ from phi.run.response import RunEvent, RunResponse
 from phi.model.google import Gemini
 from phi.embedder.google import GeminiEmbedder
 
-from dotenv import load_dotenv
-
-load_dotenv()
+os.environ['GEMINIAPI_KEY'] = st.secrets['GEMINIAPI_KEY']
 
 collection_name = "artists"
 
