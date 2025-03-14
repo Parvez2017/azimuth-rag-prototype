@@ -6,6 +6,9 @@ from phi.agent import Agent, AgentKnowledge
 from phi.knowledge.text import TextKnowledgeBase
 from phi.embedder.openai import OpenAIEmbedder
 from phi.model.openai import OpenAIChat
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 from phi.vectordb.chroma import ChromaDb
 from phi.knowledge.json import JSONKnowledgeBase
 from phi.run.response import RunEvent, RunResponse
@@ -16,9 +19,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 api_key = os.getenv("QDRANT_API_KEY")
 qdrant_url = os.getenv("QDRANT_URL")
